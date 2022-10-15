@@ -39,7 +39,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		id_, conf = recognizer.predict(roiGray)
 
         #Look in dictionary 
-		for name, value in dict.items():
+		for name, value in dicti.items():
 			if value == id_:
 				print(name)
 
