@@ -37,7 +37,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	
 	#Face detect
-	faces = faceCascade.detectMultiScale(gray, scaleFactor = 1.5, minNeighbors = 5)
+	faces = face_cascade.detectMultiScale(gray, scaleFactor = 1.5, minNeighbors = 5)
 	
 	#Collecting Images from frames(30 images)
 	for (x, y, w, h) in faces:
