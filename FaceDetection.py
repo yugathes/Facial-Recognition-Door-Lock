@@ -13,8 +13,9 @@ camera.framerate = 30
 #Capture Variable
 rawCapture = PiRGBArray(camera, size=(640, 480))
 
-#Cascade File("C:\Users\MIZTA PAVI\Desktop\FYP\haarcascade_frontalface_default.xml")
 face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+
+font = cv2.FONT_HERSHEY_SIMPLEX
 
 #File to save images of a person
 name = input("What's his/her Name? ")
