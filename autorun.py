@@ -12,6 +12,8 @@ c = menu()
 if(c==1):
     print("Enroll")
     exec(open("FaceDetection.py").read())
+    print("Enroll Complete")
+    menu()
 if(c==2):
     print("Start")
 if(c==3):
