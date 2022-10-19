@@ -12,7 +12,7 @@ yellow = [21]
 red = [16]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(relay, GPIO.OUT)
-GPIO.setup(relay, GPIO.OUT)
+GPIO.setup(green, GPIO.OUT)
 GPIO.output(relay, 0)
 
 #We load pickle file
