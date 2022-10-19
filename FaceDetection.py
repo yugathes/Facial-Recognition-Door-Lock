@@ -48,7 +48,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		cv2.imwrite(fileName, roiGray)
 		cv2.imshow("face", roiGray)
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-		cv2.putText(frame, count, (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
+		cv2.putText(frame, str(count), (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
 		count += 1
 		
     #Output Image		
