@@ -6,10 +6,14 @@ import pickle
 import RPi.GPIO as GPIO
 from time import sleep
 
-relay_pin = [26]
+relay = [14]
+green = [20]
+yellow = [21]
+red = [16]
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(relay_pin, GPIO.OUT)
-GPIO.output(relay_pin, 0)
+GPIO.setup(relay, GPIO.OUT)
+GPIO.setup(relay, GPIO.OUT)
+GPIO.output(relay, 0)
 
 #We load pickle file
 with open('labels', 'rb') as f:
@@ -45,14 +49,14 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
         #Check confidence, If <70 the doors open
 		if conf <= 70:
-			GPIO.output(relay_pin, 1)
+			GPIO.output(relay, 1)
 			print("Door Unlock")			
 			#Rectangle frame will output
 			cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 			cv2.putText(frame, name + str(conf), (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
 
 		else:
-			GPIO.output(relay_pin, 0)
+			GPIO.output(relay, 0)
 
 	cv2.imshow('frame', frame)
 	key = cv2.waitKey(1)
