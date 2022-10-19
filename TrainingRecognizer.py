@@ -47,22 +47,25 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	for (x, y, w, h) in faces:
 		roiGray = gray[y:y+h, x:x+w]
 
-		id_, conf = recognizer.predict(roiGray)
+		id_, loss = recognizer.predict(roiGray)
+		conf = 100-loss
 		
         #Look in dictionary 
 		for name, value in dicti.items():
 			if value == id_:
-				print("Name : %s --- Confidence : %d" ,name,conf)
+				print("Name : " + name + " --- Confidence : " + conf)
+				#Rectangle frame will output
 				cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-				cv2.putText(frame, name + str(conf), (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
+				cv2.putText(frame, name + str(loss), (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
 
-        #Check confidence, If <70 the doors open
-		if conf <= 70:
+        #Check lossidence, If <70 the doors open
+		if loss <= 70:
 			GPIO.output(relay, 1)
 			GPIO.output(green, 1)
 			print("Door Unlock")
-			sleep()			
-			#Rectangle frame will output
+			print("In 10 seconds Door Lock again")
+			sleep(10)			
+			
 			
 
 		else:
