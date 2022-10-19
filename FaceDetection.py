@@ -41,7 +41,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	
 	#Collecting Images from frames(30 images)
 	for (x, y, w, h) in faces:
-		print("Picture Taken = " + count)
+		print("Picture Taken = " + str(count))
 		roiGray = gray[y:y+h, x:x+w]
 		fileName = dirName + "/" + name + str(count) + ".jpg"
 		cv2.imwrite(fileName, roiGray)
