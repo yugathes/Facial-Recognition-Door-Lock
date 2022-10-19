@@ -78,6 +78,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	rawCapture.truncate(0)
 
 	if key == 27:
+		GPIO.output(red, 0)
+		GPIO.output(yellow, 0)
+		GPIO.output(relay, 0)
+		GPIO.output(green, 0)
 		break
 
 cv2.destroyAllWindows()
