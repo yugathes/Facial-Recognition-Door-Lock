@@ -10,6 +10,7 @@ relay = [14]
 green = [20]
 yellow = [21]
 red = [16]
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(relay, GPIO.OUT)
 GPIO.setup(green, GPIO.OUT)
