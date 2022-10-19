@@ -13,7 +13,12 @@ red = [16]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(relay, GPIO.OUT)
 GPIO.setup(green, GPIO.OUT)
+GPIO.setup(yellow, GPIO.OUT)
+GPIO.setup(red, GPIO.OUT)
 GPIO.output(relay, 0)
+GPIO.output(green, 0)
+GPIO.output(yellow, 0)
+GPIO.output(red, 0)
 
 #We load pickle file
 with open('labels', 'rb') as f:
@@ -33,6 +38,7 @@ recognizer.read("trainer.yml")
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	GPIO.output(yellow, 1)
 	frame = frame.array
 	#Read Frame and convert it to grayscale
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -50,6 +56,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         #Check confidence, If <70 the doors open
 		if conf <= 70:
 			GPIO.output(relay, 1)
+			GPIO.output(green, 1)
 			print("Door Unlock")			
 			#Rectangle frame will output
 			cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
@@ -57,6 +64,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 		else:
 			GPIO.output(relay, 0)
+			GPIO.output(red, 1)
 
 	cv2.imshow('frame', frame)
 	key = cv2.waitKey(1)
