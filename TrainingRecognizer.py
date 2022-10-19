@@ -52,7 +52,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         #Look in dictionary 
 		for name, value in dicti.items():
 			if value == id_:
-				print(name)
+				print("Name : %s --- Confidence : %d" ,name,conf)
 				cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 				cv2.putText(frame, name + str(conf), (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
 
@@ -60,7 +60,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		if conf <= 70:
 			GPIO.output(relay, 1)
 			GPIO.output(green, 1)
-			print("Door Unlock")			
+			print("Door Unlock")
+			sleep()			
 			#Rectangle frame will output
 			
 
