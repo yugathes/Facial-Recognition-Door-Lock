@@ -11,6 +11,7 @@ green = [20]
 yellow = [21]
 red = [16]
 buzzer = [26]
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(relay, GPIO.OUT)
@@ -18,6 +19,8 @@ GPIO.setup(green, GPIO.OUT)
 GPIO.setup(yellow, GPIO.OUT)
 GPIO.setup(red, GPIO.OUT)
 GPIO.setup(buzzer, GPIO.OUT)
+
+GPIO.setup(buzzer, 0)
 GPIO.output(relay, 0)
 GPIO.output(green, 0)
 GPIO.output(yellow, 0)
