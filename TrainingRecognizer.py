@@ -10,12 +10,14 @@ relay = [14]
 green = [20]
 yellow = [21]
 red = [16]
+buzzer = [26]
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(relay, GPIO.OUT)
 GPIO.setup(green, GPIO.OUT)
 GPIO.setup(yellow, GPIO.OUT)
 GPIO.setup(red, GPIO.OUT)
+GPIO.setup(buzzer, GPIO.OUT)
 GPIO.output(relay, 0)
 GPIO.output(green, 0)
 GPIO.output(yellow, 0)
@@ -62,6 +64,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		if loss <= 70:
 			GPIO.output(relay, 1)
 			GPIO.output(green, 1)
+			GPIO.output(red, 0)
+			GPIO.output(buzzer, 1)
 			print("Door Unlock")
 			print("In 10 seconds Door Lock again")
 			sleep(10)			
@@ -82,6 +86,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		GPIO.output(yellow, 0)
 		GPIO.output(relay, 0)
 		GPIO.output(green, 0)
+		GPIO.output(buzzer, 0)
 		break
 
 cv2.destroyAllWindows()
