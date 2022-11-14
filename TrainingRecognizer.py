@@ -74,8 +74,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 			GPIO.output(relay, 1)
 			GPIO.output(green, 1)
 			GPIO.output(red, 0)
-			GPIO.output(buzzer, 1)
-			print("Door Unlock by " + name)
+			print("Door Unlock by " + name + "with Confidence of " + conf)
 			print("In 10 seconds Door Lock again")
 			sleep(10)			
 			GPIO.output(relay,0)
@@ -85,7 +84,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		else:
 			GPIO.output(relay, 0)
 			GPIO.output(red, 1)
-			GPIO.output(buzzer, 0)
+			GPIO.output(buzzer, 1)
 
 	cv2.imshow('frame', frame)
 	key = cv2.waitKey(1)
