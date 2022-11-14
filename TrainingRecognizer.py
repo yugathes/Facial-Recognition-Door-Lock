@@ -73,7 +73,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 			print("In 10 seconds Door Lock again")
 			sleep(10)			
 			GPIO.output(relay,0)
-			GPIO.output(green,0)			
+			GPIO.output(green,0)
+			GPIO.output(buzzer, 0)			
 
 		else:
 			GPIO.output(relay, 0)
