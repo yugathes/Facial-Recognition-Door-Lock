@@ -60,7 +60,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 			if value == id_:
 				print("Name : " + name + " --- Confidence : " + str(conf))
 				#Rectangle frame will output
-				if con >= 60:
+				if conf >= 60:
 					cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 					cv2.putText(frame, name + str(conf), (x, y), font, 2, (0, 0 ,255), 2,cv2.LINE_AA)
 				else:
