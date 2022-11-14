@@ -78,6 +78,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		else:
 			GPIO.output(relay, 0)
 			GPIO.output(red, 1)
+			GPIO.output(buzzer, 0)
 
 	cv2.imshow('frame', frame)
 	key = cv2.waitKey(1)
